@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('admin.layout.master');
 });
+
+Route::name("auth.")->group(function () {
+    Route::match(["get", "post"], "register", "AuthController@register")->name("register");
+    Route::match(["get", "post"], "login", "AuthController@login")->name("login");
+});
+
+Route::get("resume-builder", "ResumeBuilderController@edit")->name("resume-builder.edit");
